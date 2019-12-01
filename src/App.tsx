@@ -1,36 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {
-  AppContainer,
-  AppHeader,
-  AppTitle,
-  AppLogo,
-  AppLink,
-} from './App.styled';
+import { Route, Switch } from 'react-router-dom';
 import { GlobalStyle } from './index.styled';
+import Auxx from './hoc/Auxx/Auxx';
+import AllMoviesContainer from "./containers/MoviesListContainer/MoviesListContainer";
+import SingleMovieContainer from "./containers/SingleMovieContainer/SingleMovieContainer";
 
 const App: React.FC = () => {
   return (
     <>
+
       <GlobalStyle/>
-      <AppContainer>
-        <AppHeader>
-          <AppLogo src={logo} alt="logo"/>
-          <AppTitle>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </AppTitle>
-          <AppLink
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </AppLink>
-        </AppHeader>
-      </AppContainer>
+        <Auxx>
+          <Switch>
+            <Route path="/single-movie" component={SingleMovieContainer} />
+            <Route path="/" exact component={AllMoviesContainer} />
+          </Switch>
+        </Auxx>
     </>
   );
-}
+};
 
 export default App;

@@ -1,21 +1,21 @@
-import styled from "styled-components";
+import $ from 'styled-components';
 
-export const AppContainer = styled.div`
+export const $Container = $.div`
  text-align: center;
 `;
 
-export const AppHeader = styled.header`
+export const $Header = $.header`
  background-color: #222;
  height: 550px;
  padding: 20px;
  color: white;
 `;
 
-export const AppTitle = styled.h1`
+export const $Title = $.h1`
    font-size: 1.5em;
 `;
 
-export const AppLogo = styled.img`
+export const $Logo = $.img`
  animation: App-logo-spin infinite 20s linear;
  height: 80px;
  @keyframes App-logo-spin {
@@ -24,6 +24,6 @@ export const AppLogo = styled.img`
  }
 `;
 
-export const AppLink = styled.a`
+export const $Link = $.a`
   color: #09d3ac;
 `;
