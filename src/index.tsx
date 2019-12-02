@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import MoviesListReducer from './store/moviesList/reducer';
 import SortConfigReducer from './store/sortConfig/reducer';
 import SingleMovieReducer from './store/singleMovie/reducer';
-import { RootState } from "./store/rootTypes";
+import { RootState } from './store/rootTypes';
 
 const composeEnhancers =
   process.env.NODE_ENV === 'development'
@@ -26,7 +26,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 const app = (
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <App/>
     </BrowserRouter>
   </Provider>
 );

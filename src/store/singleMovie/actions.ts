@@ -8,9 +8,3 @@ export const setSingleMovie = (singleMovie: SingleMovie): AnyAction => {
     payload: singleMovie,
   }
 };
-
-export const deleteSingleMovie = (): AnyAction => {
-  return {
-    type: SingleMovieActionTypes.SINGLE_MOVIE_DELETE,
-  }
-};

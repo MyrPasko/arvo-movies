@@ -1,6 +1,5 @@
-import { SingleMovieActionTypes, SingleMovieState } from "./types";
-import { Reducer, AnyAction } from "redux";
-
+import { SingleMovieActionTypes, SingleMovieState } from './types';
+import { Reducer, AnyAction } from 'redux';
 
 const initialState: SingleMovieState = {
   singleMovie: undefined,

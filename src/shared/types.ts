@@ -30,6 +30,12 @@ export enum MoviesListViewType {
   list = 'List',
 }
 
+export enum HelperTexts {
+  loading = 'LOADING...',
+  requestError = 'Error during uploading data.',
+  noResults = 'NO RESULTS',
+}
+
 export type SearchResult = string;
 
 export type SortConfigValue = MoviesListViewType | SearchResult | undefined;

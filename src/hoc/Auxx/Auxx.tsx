@@ -1,5 +1,4 @@
-import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
-import { $Auxx } from './Auxx.styled';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 interface OwnProps {
   children: ReactNode,
@@ -10,9 +9,9 @@ type Props = OwnProps;
 const Auxx: FunctionComponent<Props> = ({ children }) => {
 
   return (
-    <$Auxx>
+    <main>
       {children}
-    </$Auxx>
+    </main>
   );
 };
 

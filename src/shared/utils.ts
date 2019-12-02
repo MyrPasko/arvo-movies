@@ -1,5 +1,6 @@
-import { GenreType, MoviesList, SearchResult, SingleMovie, SortConfigParam, SortConfigValue } from './types';
+import { GenreType, MoviesList, SingleMovie } from './types';
 import data from './data';
+import { SortConfigState } from '../store/sortConfig/types';
 
 export const getMoviesListHelper = (): Promise<MoviesList> => {
   return new Promise((resolve) => {
@@ -11,9 +12,9 @@ export const getMoviesListHelper = (): Promise<MoviesList> => {
 
 export class FilterByConfig {
   data: MoviesList;
-  sortConfig: SortConfigParam;
+  sortConfig: SortConfigState;
 
-  constructor(data: MoviesList, sortConfig: SortConfigParam) {
+  constructor(data: MoviesList, sortConfig: SortConfigState) {
     this.data = data;
     this.sortConfig = sortConfig;
   }
@@ -22,7 +23,7 @@ export class FilterByConfig {
     const genre = this.sortConfig.movieGenre;
 
     this.data = this.data.filter((movie: SingleMovie) => {
-      return genre ? movie.genres.includes(genre) : true;
+      return genre ? movie.genres.includes(<GenreType>genre) : true;
     });
 
     return this;

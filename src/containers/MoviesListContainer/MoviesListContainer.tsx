@@ -2,12 +2,18 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Redirect } from 'react-router-dom';
-import './probe.css';
 import { RootState } from '../../store/rootTypes';
 import * as moviesListActions from '../../store/moviesList/actions';
 import * as sortConfigActions from '../../store/sortConfig/actions';
-import { getMoviesListHelper } from "../../shared/utils";
-import { MoviesList, MoviesListViewType, SingleMovie, SortConfigParam } from "../../shared/types";
+import * as singleMovieActions from '../../store/singleMovie/actions';
+import { FilterByConfig, getMoviesListHelper } from '../../shared/utils';
+import { HelperTexts, MoviesList, SingleMovie, SortConfigParam } from '../../shared/types';
+import { Container, Menu, MoviesWrapper } from './MoviesListContainer.styled';
+import HelperText from '../../components/HelperText/HelperText';
+import SelectGenre from '../../components/SelectGenre/SelectGenre';
+import Search from '../../components/Search/Search';
+import SelectView from '../../components/SelectView/SelectView';
+import MovieItem from '../../components/MovieItem/MovieItem';
 
 interface OwnProps {
 }
@@ -27,14 +33,9 @@ class MoviesListContainer extends PureComponent<MoviesListProps, MoviesListState
     listOfGenres: [],
   };
 
-  // goToSingleHandler = () => {
-  //   console.log('[We go to single]');
-  //   this.setState({ shouldRedirect: true });
-  // };
-
   buildGenresList = (movies: MoviesList) => {
     const setOfGenres: Set<string> = new Set();
-    let listOfGenres: Array<string> = [];
+    let listOfGenres: Array<string>;
 
     movies.forEach((movie: SingleMovie): void => {
       movie.genres.reduce((set, val) => set.add(val), setOfGenres);
@@ -53,10 +54,10 @@ class MoviesListContainer extends PureComponent<MoviesListProps, MoviesListState
     onSetListMoviesStart();
     try {
       const movies = await getMoviesListHelper();
+
       movies.sort((a, b) => {
         return Number(b.rate) - Number(a.rate);
       });
-
       onSetListMoviesSuccess(movies);
       this.buildGenresList(movies);
     } catch (e) {
@@ -92,66 +93,68 @@ class MoviesListContainer extends PureComponent<MoviesListProps, MoviesListState
     this.getMoviesList();
   }
 
-  render() {
-    const { shouldRedirect, listOfGenres } = this.state;
-    const { loading, error, sortConfig } = this.props;
-    const { viewType, movieGenre, searchParam } = this.props.sortConfig;
-
-    console.log('[SingleMovie]', this.props.singleMovie);
-    console.log('[loading]', this.props.loading);
+  renderRedirect = () => {
+    const { shouldRedirect } = this.state;
 
     if (shouldRedirect) {
       return (
         <Redirect to="/single-movie"/>
       )
     }
+  };
+
+  redirectToSingleMovieHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, movie: SingleMovie) => {
+    const { onSetSingleMovie } = this.props;
+
+    e.preventDefault();
+    onSetSingleMovie(movie);
+    this.setState({ shouldRedirect: true });
+  };
+
+  render() {
+    const { listOfGenres } = this.state;
+    const { loading, error, sortConfig, movieList } = this.props;
+    const { viewType, movieGenre, searchParam } = sortConfig;
+    const filterByConfig = new FilterByConfig(movieList, sortConfig);
+    const filteredData = filterByConfig.sortByGenre().sortBySearchParam();
 
     return (
       <>
-        <div className="container">
-          <div className="menu">
-            <select className="genre-sort" onChange={this.selectChangeGenreHandler} value={movieGenre}>
-              {listOfGenres.map((genre) => {
-                return <option key={genre}>{genre}</option>
-              })}
-            </select>
-            <div>
-              <label>Search: </label>
-              <input type="search" onChange={this.searchHandler} value={searchParam}/>
-            </div>
-            <select className="view-switch" onChange={this.selectChangeViewHandler} value={viewType}>
-              <option>Tile</option>
-              <option>List</option>
-            </select>
-          </div>
+        {this.renderRedirect()}
+        <Container>
+          <Menu>
+            <SelectGenre
+              changeGenre={this.selectChangeGenreHandler}
+              listOfGenres={listOfGenres}
+              movieGenre={movieGenre}
+            />
+            <Search searchHandler={this.searchHandler} searchParam={searchParam}/>
+            <SelectView changeViewHandler={this.selectChangeViewHandler} viewType={viewType}/>
+          </Menu>
 
-          {error && <div>
-            <p style={{ color: 'white' }}>Error during uploading data.</p>
-          </div>}
+          {error && <HelperText helpText={HelperTexts.requestError}/>}
 
-          {loading && <div>
-            <p style={{ color: 'white' }}>LOADING...</p>
-          </div>}
-          {!loading && !error && <div className="movies-list">
-            {sortConfig &&
-            sortConfig.viewType === MoviesListViewType.list ?
-              <div className="single-movie-list">
-                <div className="image-list"></div>
-                <div className="info">
-                  <p className="movie-name-list">Movie name</p>
-                  <p className="movie-name-list">Genres</p>
-                </div>
-              </div>
-              :
-              <div className="single-movie-tile">
-                <div className="image"></div>
-                <p className="movie-name">Movie name</p>
-                <p className="movie-name">Genres: </p>
-              </div>}
-          </div>}
-        </div>
+          {loading && <HelperText helpText={HelperTexts.loading}/>}
 
-        {/*<button onClick={this.goToSingleHandler}>Go to single movie</button>*/}
+          {!filteredData.length && !loading && <HelperText helpText={HelperTexts.noResults}/>}
+
+          {!loading &&
+          !error &&
+          <MoviesWrapper>
+            {filteredData.map((movie: SingleMovie) => {
+              const { id } = movie;
+
+              return (
+                <MovieItem
+                  key={id}
+                  movie={movie}
+                  sortConfig={sortConfig}
+                  toSingleMovieHandler={this.redirectToSingleMovieHandler}
+                />
+              )
+            })}
+          </MoviesWrapper>}
+        </Container>
       </>
     );
   }
@@ -160,9 +163,9 @@ class MoviesListContainer extends PureComponent<MoviesListProps, MoviesListState
 const mapStateToProps = (state: RootState) => {
 
   return {
+    movieList: state.moviesList.list,
     loading: state.moviesList.loading,
     error: state.moviesList.error,
-    singleMovie: state.singleMovie.singleMovie,
     sortConfig: state.sortConfig,
   };
 };
@@ -177,6 +180,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     onChangeViewType: (param: SortConfigParam) => (
       dispatch(sortConfigActions.changeSortConfig(param))
     ),
+    onSetSingleMovie: (movie: SingleMovie) => (dispatch(singleMovieActions.setSingleMovie(movie))),
   }
 };
 
