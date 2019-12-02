@@ -1,36 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="798d5630-9c26-43f9-85c5-6fddf1afe5c5" name="Default Changelist" comment="Last commit">
-      <change afterPath="$PROJECT_DIR$/src/components/HelperText/HelperText.styled.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HelperText/HelperText.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MovieItem/MovieItem.styled.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MovieItem/MovieItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Search/Search.styled.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Search/Search.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SelectGenre/SelectGenre.styled.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SelectGenre/SelectGenre.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SelectView/SelectView.styled.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SelectView/SelectView.tsx" afterDir="false" />
+    <list default="true" id="798d5630-9c26-43f9-85c5-6fddf1afe5c5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.styled.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/MoviesListContainer/MoviesListContainer.styled.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MoviesListContainer/MoviesListContainer.styled.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/MoviesListContainer/MoviesListContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MoviesListContainer/MoviesListContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/MoviesListContainer/probe.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/SingleMovieContainer/SingleMovieContainer.styled.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/SingleMovieContainer/SingleMovieContainer.styled.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/SingleMovieContainer/SingleMovieContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/SingleMovieContainer/SingleMovieContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/Auxx/Auxx.styled.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/Auxx/Auxx.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Auxx/Auxx.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/singleMovie/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/singleMovie/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/singleMovie/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/singleMovie/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/singleMovie/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/singleMovie/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/sortConfig/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/sortConfig/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/sortConfig/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/sortConfig/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/sortConfig/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/sortConfig/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +68,14 @@
       <updated>1574912533458</updated>
       <workItem from="1574912541162" duration="2993000" />
     </task>
+    <task id="LOCAL-00001" summary="Last commit">
+      <created>1575270312855</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575270312855</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,14 +103,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.217.1360.728@0.0.1920.1040" timestamp="1575180966656" />
-    <state x="583" y="114" key="CommitChangelistDialog2" timestamp="1575270269872">
+    <state x="583" y="114" key="CommitChangelistDialog2" timestamp="1575270309857">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="583" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.217.1360.728@0.0.1920.1040" timestamp="1575270269872" />
+    <state x="583" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.217.1360.728@0.0.1920.1040" timestamp="1575270309857" />
     <state x="191" y="22" width="998" height="892" key="SettingsEditor" timestamp="1575231778616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="191" y="22" width="998" height="892" key="SettingsEditor/0.0.1920.1040/1920.217.1360.728@0.0.1920.1040" timestamp="1575231778616" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1575270319807">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.217.1360.728@0.0.1920.1040" timestamp="1575270319807" />
     <state x="29" y="13" width="1762" height="909" key="find.popup" timestamp="1575270223597">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

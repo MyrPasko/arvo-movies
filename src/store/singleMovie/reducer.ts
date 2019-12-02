@@ -13,9 +13,6 @@ const reducer: Reducer<SingleMovieState> = (
     case SingleMovieActionTypes.SINGLE_MOVIE_SET: {
       return { ...state, singleMovie: action.payload }
     }
-    case SingleMovieActionTypes.SINGLE_MOVIE_DELETE: {
-      return { ...state, singleMovie: undefined }
-    }
     default: {
       return state;
     }
